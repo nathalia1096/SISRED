@@ -12,7 +12,7 @@ class Perfil(models.Model):
     numero_identificacion = models.CharField(max_length=50)
 
     def __str__(self):
-        return "Rol: " + self.usuario
+        return "Rol: " + self.numero_identificacion
 
 
 class Notificacion(models.Model):
