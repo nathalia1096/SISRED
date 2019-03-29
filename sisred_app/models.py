@@ -53,9 +53,16 @@ class ProyectoConectate(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
 
-
     def __str__(self):
         return 'Proyecto conectate: ' + self.nombre
+
+
+class Fase(models.Model):
+    id_conectate = models.CharField(max_length=50)
+    nombre_fase = models.CharField(max_length=50)
+
+    def __str__(self):
+        return 'Fase: ' + self.nombre_fase
 
 
 class RED(models.Model):
@@ -74,6 +81,7 @@ class RED(models.Model):
     metadata = models.ManyToManyField(Metadata)
     horas_estimadas = models.IntegerField()
     horas_trabajadas = models.IntegerField()
+    fase = models.ForeignKey(Fase, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return 'Red: ' + self.codigo
